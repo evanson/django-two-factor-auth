@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block title %}
+    Signup
+{% endblock %}
+{% block sidebar %}
+
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-2">
+        <form role="form" action="" method="post" class="form-horizontal">
+            <h4>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</h4>
+            <h4>Account Details</h4>
+
+            {{ wizard.management_form }}    
+            {% csrf_token %}
+            {%  bootstrap_form form layout='horizontal' %}
+    
+            <p>A verification token will be sent to the above number by SMS</p>
+            {% buttons submit='Continue' reset='Cancel'  layout='horizontal' %}{% endbuttons %}
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'bootstrap.html' %}
+
+{% load url from future %}
+
+{% load bootstrap3 %}
+
+{% load staticfiles %}
+
+{% block bootstrap3_extra_head %}
+    <!-- Custom Fonts -->
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+
+{% endblock %}
+
+{% block bootstrap3_content %}
+
+	    {% include 'topnavigation.html' %}
+    <div class="container">
+<div class="row">
+      <div class="col-sm-2">
+	      {% block sidebar %}
+          <ul id="sidebar" class="nav nav-stacked ">
+    </ul>
+    {% endblock sidebar %}
+
+      </div>
+      <div class="col-sm-10">
+	    {% block controlbar %}
+	    {% endblock %}
+        {% bootstrap_messages messages %}
+        {% block content %}(no content){% endblock %}
+     </div>
+    </div>
+    </div>
+
+{% endblock %}

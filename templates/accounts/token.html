@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block title %}
+    {% if not login %}
+        Sign Up
+    {% else %}
+        Log In Verification
+    {% endif %}
+{% endblock %}
+{% block sidebar %}
+
+{% endblock %}
+{% block content %}
+{% bootstrap_form_errors form %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-2">
+        <form role="form" action="" method="post" class="form-horizontal">
+            <h4>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</h4>
+            <h5>Token</h5>
+            <p>Please input the token sent to your phone number by SMS</p>
+            {% if not login %}
+            <p>If you did not receive the token, please go back to the previous step and verify your number is correct
+            {% endif %}
+            </p>
+    {{ wizard.management_form }}    
+    {% csrf_token %}
+    {%  bootstrap_form form layout='horizontal' %}
+    {% buttons submit='Continue' reset='Cancel'  layout='horizontal' %}{% endbuttons %}
+    {% if wizard.steps.prev %}
+            <button class="btn btn-primary btn-sm" name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}"><span class="glyphicon glyphicon-fast-backward"></span>  {% trans "First step" %}</button>
+            <button class="btn btn-primary btn-sm" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}"><span class="glyphicon glyphicon-backward"></span>  {% trans "Prev step" %}</button>
+    {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock %}

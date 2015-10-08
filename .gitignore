@@ -1,0 +1,22 @@
+syntax: glob
+
+*.tar
+*.gz
+*.log
+*.log.*
+*.pyc
+*.pid
+*.swp
+*.swo
+*.rdb
+*.py~
+*.txt~
+*~
+bin
+develop-eggs
+dist
+downloads
+eggs
+parts
+src/*.egg-info
+logs
