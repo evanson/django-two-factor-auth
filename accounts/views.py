@@ -2,7 +2,6 @@ import re
 import random
 import logging
 import hashlib
-import marshal
 from datetime import datetime, timedelta
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, Http404
